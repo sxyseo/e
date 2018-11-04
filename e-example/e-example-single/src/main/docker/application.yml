@@ -70,19 +70,10 @@ spring:
     test-while-idle: true
   jpa:
     properties:
-      javax:
-        persistence:
-          sharedCache:
-            mode: ENABLE_SELECTIVE
       hibernate:
+        #dialect: com.loy.e.core.dialect.EMySQL5InnoDBDialect
         dialect: org.hibernate.dialect.H2Dialect
-        generate_statistics: true
-        cache:
-          use_second_level_cache: true
-          use_query_cache: true
-          region:
-            factory_class: com.loy.hibernate.ehcache.SingletonEhCacheRegionFactory
-    showSql: false
+    showSql: true
     hibernate:
       ddlAuto: update
   jackson:
@@ -98,15 +89,13 @@ server:
     uri-encoding: UTF-8
 
 endpoints:
-    actuator:
-      enabled: true
-      sensitive: false
-    logfile:
-      enabled: false
-      path: /logfile
-      sensitive: true
-    heapdump:
-        enabled: false
+  actuator:
+    enabled: true
+    sensitive: false
+  logfile:
+    enabled: true
+    path: /logfile
+    sensitive: true
 
 
 logging:

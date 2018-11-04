@@ -13,64 +13,64 @@ zuul:
         sensitive-headers: true
         stripPrefix: true
         path: /upm/**
-        url: http://localhost:18080/
+        url: http://upm:18080/
         
       upm-ui: 
         sensitive-headers: true
         stripPrefix: true
         path: /upm-ui/**
-        url: http://localhost:8888/
+        url: http://ui:8888/
         
       log:
         sensitive-headers: true
         stripPrefix: true
         path: /log/**
-        url: http://localhost:28080/
+        url: http://log:28080/
         
       log-ui:
         sensitive-headers: true
         stripPrefix: true
         path: /log-ui/**
-        url: http://localhost:8888/
+        url: http://ui:8888/
         
         
       demo:
         sensitive-headers: true
         stripPrefix: true
         path: /demo/**
-        #url: http://localhost:38080/
-        serviceId: demo
+        #serviceId: demo
+        url: http://demo:38080/
         
       demo-ui:
         sensitive-headers: true
         stripPrefix: true
         path: /demo-ui/**
-        url: http://localhost:8888/
+        url: http://ui:8888/
         
         
       auth: 
         sensitive-headers: true
         stripPrefix: true
         path: /uaa/**
-        url: http://localhost:9999/
+        url: http://oauth:9999/
       
       ms-ui-home: 
         sensitive-headers: true
         stripPrefix: true
         path: /
-        url: http://localhost:8888/home.html
+        url: http://ui:8888/home.html
         
       ms-ui: 
         sensitive-headers: true
         stripPrefix: true
         path: /**
-        url: http://localhost:8888/
+        url: http://ui:8888/
       
         
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/ # 指定注册中心的地址
+      defaultZone: http://discovery:8761/eureka/ # 指定注册中心的地址
   instance:
     preferIpAddress: true
     

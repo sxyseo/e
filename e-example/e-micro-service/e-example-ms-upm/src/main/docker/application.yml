@@ -1,6 +1,6 @@
 e:
   conf: 
-    authServer: http://localhost:9999/uaa
+    authServer: http://oauth:9999/uaa
     loyAspect: true
     attachmentBaseDirectory: ./upload
     defaultLocale: zh_CN
@@ -42,8 +42,8 @@ spring:
           name: upm
   datasource:
     platform: h2
-    #url: jdbc:mysql://localhost/e_upm?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&autoReconnect=true&failOverReadOnly=false
-    url: jdbc:h2:tcp://localhost/~/.h2/e_upm
+    #url: jdbc:mysql://db/e_upm?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&autoReconnect=true&failOverReadOnly=false
+    url: jdbc:h2:tcp://db/~/.h2/e_upm
     username: root
     password: 123456
     #driverClassName: com.mysql.jdbc.Driver
@@ -58,18 +58,9 @@ spring:
     test-while-idle: true
   jpa:
     properties:
-      javax:
-        persistence:
-          sharedCache:
-            mode: ENABLE_SELECTIVE
       hibernate:
+        #dialect: com.loy.e.core.dialect.EMySQL5InnoDBDialect
         dialect: org.hibernate.dialect.H2Dialect
-        generate_statistics: true
-        cache:
-          use_second_level_cache: true
-          use_query_cache: true
-          region:
-            factory_class: com.loy.hibernate.ehcache.SingletonEhCacheRegionFactory
     showSql: false
     hibernate:
       ddlAuto: update
@@ -85,7 +76,7 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://discovery:8761/eureka/
   instance:
     preferIpAddress: true
 feign: 

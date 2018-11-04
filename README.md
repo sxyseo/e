@@ -1,6 +1,6 @@
 ﻿
 # 项目演示地址
-http://www.17jee.com     QQ交流群: 540553957
+http://www.17jee.com     QQ交流群:   204690448  540553957(已满)
 # 目的
 E框架的目的是让开发不必从零开始开发，让开发者只关注自己的业务功能。
 # 技术说明
@@ -18,7 +18,7 @@ E框架的目的是让开发不必从零开始开发，让开发者只关注自�
 ## 构建须知
 * 设好jdk环境变量，项目需要jdk8,项目编码和数据库编码都采用UTF-8
 * 输出日志在eclipse下有乱码可以通过设置项目下的logback.groovy文件中日志编码为UTF-8来解决
-* 项目默认用到80端口，请检查80端口是否被占用
+* 项目默认用到8080端口，请检查8080端口是否被占用
 * 为了演示方便默认数据库设为了H2数据库，演示时不用做数据库相关的任何设置，按照构建说明进行就可以了
 * 系统默认用户名密码分别为 admin    123456
 * 实际可设为mysql，修改resources\application.yml文件的数据库相关设置为实际值,建库建表数据初始化都会自动进行
@@ -27,20 +27,20 @@ E框架的目的是让开发不必从零开始开发，让开发者只关注自�
 ##### 单体服务构建
 
 * 运行start-single-service.bat 文件，这里需要等待下载相关jar包
-* 构建成功后在浏览器中输入http://localhost  进入页面
+* 构建成功后在浏览器中输入http://localhost:8080  进入页面
 
 ##### 微服务构建
 
 * 在e目录下运行gradlew build ，成功后进行下一步
 * 在e目录下运行start-micro-service,也可以运行start-micro-service-w(启动Swing界面，可方便查看各项目日志)；
 * 此运行方式只作演示与快速启动，实际部署、启动根据自己需求作相应调整
-* 运行成功后在浏览器中输入http://localhost  进入页面
+* 运行成功后在浏览器中输入http://localhost:8080  进入页面
 
 # 开发环境
 
 ## eclipse
  
-* 直接在e目录下运行gradlew  eclipse 生成eclipse项目；导入e目录；运行e-example-single项目下的SingleApplicationMain文件；进入http://localhost；
+* 直接在e目录下运行gradlew  eclipse 生成eclipse项目；导入e目录；运行e-example-single项目下的SingleApplicationMain文件；进入http://localhost:8080；
 * 多系统启动可按下面顺序来启动各项目，最好等前一个项目启动完后再启动下一下项目
 
 	- e-example-ms-db
@@ -54,7 +54,7 @@ E框架的目的是让开发不必从零开始开发，让开发者只关注自�
 
 ## idea
 
-* 直接在e目录下运行gradlew  eclipse 生成eclipse项目；导入e目录；运行SingleApplicationMain文件；进入http://localhost；
+* 直接在e目录下运行gradlew  eclipse 生成eclipse项目；导入e目录；运行SingleApplicationMain文件；进入http://localhost:8080；
 
 # 开发说明
 
@@ -76,3 +76,9 @@ E框架的目的是让开发不必从零开始开发，让开发者只关注自�
 框架本身源码是以jar的形式提供，在生成eclipse项目时会自动从maven库上下载，可以在开发工具中查看源码和debug。也可以在http://search.maven.org 上搜索com.17jee来查询框架代码
 
 ![](source.png)
+
+# 关于修改主页信息（以e-example-single工程为例）
+
+*  1.只修改主页上的文字：可以在e-example-single工程src/main/resources下新建 i18n  包，将e-core-3.0.1.5.jar 下面  i18n 下的 .properties文件拷贝到新建的i18n下去做修改。
+*  2.修改主页文件：可以在e-example-single工程src/main/resources下新建 static 文件夹，将e-core-static-3.0.1.5.jar 下面  public 下的 home_tabs.html文件拷贝到新建的static下进行修改。
+*  3.修改主页文件：可以通过修改e-example-single工程下的配置文件application.yml  的e.conf.homePage来指定自己主页；

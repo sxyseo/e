@@ -7,6 +7,7 @@ apply plugin: "com.bmuschko.docker-remote-api"
 import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
 configurations {
     compile.exclude  group: "org.springframework.cloud" ,module: "spring-cloud-starter-eureka" 
+    compile.exclude  group: "com.17jee" ,module: "e-core-ui" 
 }
 
 description = ""
@@ -24,15 +25,21 @@ bootRepackage {
     mainClass = "com.loy.SingleApplicationMain"
 }
 dependencies {
-	compile project(":demo:demo-service")
-	compile project(":demo:demo-ui")
+	
 	compile ("com.17jee:e-core-static:${eversion}")
 	compile ("com.17jee:e-upm-service:${eversion}")
-	compile ("com.17jee:e-upm-ui:${eversion}")
-	compile ("com.17jee:e-security-auth:${eversion}")
+	compile ("com.17jee:e-upm-ui:3.0.1.12")
 	compile ("com.17jee:e-log-service:${eversion}")
 	compile ("com.17jee:e-log-ui:${eversion}")
 	compile ("com.h2database:h2:1.4.193")
+	compile ("com.17jee:e-data-permission-service:${eversion}")
+	compile ("com.17jee:e-data-permission-impl:${eversion}")
+	compile ("com.17jee:e-data-permission-ui:${eversion}")
+	compile ("com.17jee:e-security-token:${eversion}")
+	compile ("com.17jee:e-cache-hibernate-ehcache:${eversion}")
+	compile project(":demo:demo-service")
+	compile project(":demo:demo-ui")
+	
 	runtime("mysql:mysql-connector-java:${mysqlVersion}")
 	
 	compile("org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}")
@@ -68,5 +75,5 @@ task buildDockerImage(type: DockerBuildImage) {
     }
     
     inputDir = file('build/docker')
-    tag = 'com.loy/upm'
+    tag = 'com.loy/singleupm'
 }
